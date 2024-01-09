@@ -50,11 +50,6 @@ jobs:
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"lukegeor_insecure-project-3" /o:"lukegeor" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
           dotnet msbuild -restore .\InsecureProject.sln
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
-          dotnet test .\InsecureProject.sln \
-            --no-build \
-            -l trx \
-            --settings tests\coverage.runsettings \
-            --collect:"XPlat Code Coverage"
       - name: Test
         shell: powershell
         run: |
