@@ -53,10 +53,4 @@ jobs:
       - name: Test
         shell: powershell
         run: |
-          dotnet test .\InsecureProject.sln \
-            --no-build \
-            -l trx \
-            --results-directory tests\results \
-            --settings tests\coverage.runsettings \
-            --collect:"XPlat Code Coverage" \
-            -m:1
+          dotnet test .\InsecureProject.sln --no-build -l trx --results-directory tests\results --settings tests\coverage.runsettings --collect:"XPlat Code Coverage" -m:1
