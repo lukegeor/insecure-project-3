@@ -21,7 +21,7 @@ public class WeatherForecastController : ControllerBase
     [HttpGet("{city}")]
     public IEnumerable<WeatherForecast> Get([FromRoute]string city)
     {
-        _logger.LogDebug($"Get called for city {city.Replace("\n", string.Empty).Replace("\r", string.Empty)}.");
+        _logger.LogDebug($"Get called for city {city}.");
 
         var results = _dbContext.Forecasts.Where(f => f.City.ToLower().Equals(city.ToLower())).ToList();
         var transformed = results 
@@ -42,7 +42,7 @@ public class WeatherForecastController : ControllerBase
     {
         _logger.LogDebug($"Get insecure called for city {city.Replace("\n", string.Empty).Replace("\r", string.Empty)}.");
 
-        var results = _dbContext.Forecasts.FromSqlInterpolated(
+        var results = _dbContext.Forecasts.FromSqlRaw(
             $"select * from Forecasts where lower(City) = lower('{city}');")
             .ToList();
         
