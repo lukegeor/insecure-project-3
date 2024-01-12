@@ -47,7 +47,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         shell: bash
         run: |
-          ./.sonar/scanner/dotnet-sonarscanner begin /k:"lukegeor_insecure-project-3" /o:"lukegeor" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths=tests/results/**/coverage.opencover.xml
+          ./.sonar/scanner/dotnet-sonarscanner begin /k:"lukegeor_insecure-project-3" /o:"lukegeor" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths=Tests/results/**/coverage.opencover.xml
           dotnet msbuild -restore ./InsecureProject.sln
-          dotnet test ./InsecureProject.sln --no-build -l trx --results-directory tests/results --settings tests/coverage.runsettings --collect:"XPlat Code Coverage" -m:1
+          dotnet test ./InsecureProject.sln --no-build -l trx --results-directory Tests/results --settings Tests/coverage.runsettings --collect:"XPlat Code Coverage" -m:1
           ./.sonar/scanner/dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
