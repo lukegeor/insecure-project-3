@@ -55,8 +55,8 @@ jobs:
         env:
           FETCH_LICENSE: true
         with:
-          output: "./reports/sbom.xml"
+          output: "./sbom.xml"
       - uses: actions/upload-artifact@v1
         with:
-          name: reports
-          path: reports
+          name: "SBOM"
+          path: "./sbom.xml"
