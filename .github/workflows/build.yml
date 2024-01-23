@@ -55,7 +55,7 @@ jobs:
         env:
           FETCH_LICENSE: true
         with:
-          args: --output "./sbom.xml" --project-group "illumina.com" --project-name "insecure-project-3" --project-version "1.0.1" --project-id "insecure-project-3-1.0.1"
+          args: --output "./sbom.json" --project-group "illumina.com" --project-name "insecure-project-3" --project-version "1.0.1" --project-id "insecure-project-3-1.0.1"
       - uses: actions/upload-artifact@v1
         with:
           name: "SBOM"
