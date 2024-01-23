@@ -52,6 +52,8 @@ jobs:
           dotnet test ./InsecureProject.sln --no-build -l trx --results-directory Tests/results --settings Tests/coverage.runsettings --collect:"XPlat Code Coverage" -m:1
           ./.sonar/scanner/dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
       - uses: AppThreat/cdxgen-action@v1
+        env:
+          FETCH_LICENSE: true
         with:
           output: "./reports/sbom.xml"
       - uses: actions/upload-artifact@v1
