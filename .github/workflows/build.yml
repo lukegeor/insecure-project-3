@@ -51,7 +51,7 @@ jobs:
           dotnet msbuild -restore ./InsecureProject.sln
           dotnet test ./InsecureProject.sln --no-build -l trx --results-directory Tests/results --settings Tests/coverage.runsettings --collect:"XPlat Code Coverage" -m:1
           ./.sonar/scanner/dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
-      - uses: advanced-security/sbom-generator-action@v0.0.1
+      - uses: advanced-security/generate-sbom-action@v1
         id: sbom
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
