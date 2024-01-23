@@ -54,6 +54,7 @@ jobs:
       - uses: AppThreat/cdxgen-action@v1
         env:
           FETCH_LICENSE: true
+          SCAN_DEBUG_MODE: debug
         with:
           output: "./sbom.xml"
       - uses: actions/upload-artifact@v1
