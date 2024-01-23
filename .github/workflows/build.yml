@@ -51,12 +51,11 @@ jobs:
           dotnet msbuild -restore ./InsecureProject.sln
           dotnet test ./InsecureProject.sln --no-build -l trx --results-directory Tests/results --settings Tests/coverage.runsettings --collect:"XPlat Code Coverage" -m:1
           ./.sonar/scanner/dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
-      - uses: AppThreat/cdxgen-action@v1
+      - uses: docker://ghcr.io/cyclonedx/cdxgen:v9.11.2
         env:
           FETCH_LICENSE: true
-          SCAN_DEBUG_MODE: debug
         with:
-          output: "./sbom.xml"
+          args: --output "./sbom.xml"
       - uses: actions/upload-artifact@v1
         with:
           name: "SBOM"
