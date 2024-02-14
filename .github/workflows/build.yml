@@ -98,6 +98,7 @@ jobs:
         with:
           comment-summary-in-pr: always
           fail-on-scopes: runtime,development
+          head-ref: ${{ github.sha }}
     permissions:
       pull-requests: write
       contents: write
