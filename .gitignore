@@ -400,3 +400,5 @@ FodyWeavers.xsd
 **/.idea/sonarlint
 
 Tests/results
+
+packages.lock.json
