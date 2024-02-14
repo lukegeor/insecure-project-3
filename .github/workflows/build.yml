@@ -24,6 +24,12 @@ jobs:
         with:
           java-version: 17
           distribution: 'zulu' # Alternative distribution options are available.
+      - name: Set up .Net 8
+        uses: actions/setup-dotnet@v3.2.0
+        env:
+          DOTNET_INSTALL_DIR: ~/dotnet-sdk-install-dir
+        with:
+          dotnet-version: '8.0.200'
       - uses: actions/setup-node@v4
         with:
           node-version: 18
