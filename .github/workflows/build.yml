@@ -92,3 +92,6 @@ jobs:
         with:
           path: ${{ steps.sbom.outputs.fileName }}
           name: "SBOM"
+    permissions:
+      pull-requests: write
+      contents: write
