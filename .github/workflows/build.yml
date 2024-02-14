@@ -92,6 +92,12 @@ jobs:
         with:
           path: ${{ steps.sbom.outputs.fileName }}
           name: "SBOM"
+      - name: Dependency Review
+        if: ${{ github.event_name == 'pull_request' }}
+        uses: actions/dependency-review-action@v3
+        with:
+          comment-summary-in-pr: always
+          fail-on-scopes: runtime,development
     permissions:
       pull-requests: write
       contents: write
