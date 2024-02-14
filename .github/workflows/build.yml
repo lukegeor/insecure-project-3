@@ -92,6 +92,10 @@ jobs:
         with:
           path: ${{ steps.sbom.outputs.fileName }}
           name: "SBOM"
+      - name: 'Dependency Review'
+        uses: actions/dependency-review-action@v3
+        with:
+          comment-summary-in-pr: always
     permissions:
       pull-requests: write
       contents: write
