@@ -31,6 +31,8 @@ public class WeatherForecastController : ControllerBase
                 TemperatureC = f.Temperature,
                 Summary = f.Summary
             });
+        var twoWeeksAgo = DateTime.Now.Subtract(TimeSpan.FromDays(14));
+        _logger.LogDebug("Two weeks ago was {twoWeeksAgo}", twoWeeksAgo);
         var serialized = JsonConvert.SerializeObject(transformed);
         _logger.LogDebug($"Returning { serialized } to caller.");
 
@@ -42,7 +44,7 @@ public class WeatherForecastController : ControllerBase
     {
         _logger.LogDebug($"Get insecure called for city {city.Replace("\n", string.Empty).Replace("\r", string.Empty)}.");
 
-        var results = _dbContext.Forecasts.FromSqlRaw(
+        var results = _dbContext.Forecasts.FromSqlInterpolated(
             $"select * from Forecasts where lower(City) = lower('{city}');")
             .ToList();
         
